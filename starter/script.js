@@ -111,7 +111,7 @@ var upperCasedCharacters = [
 
 // FUNCTION: select password length
 
-let passwordLength
+let passwordLength;
 
 function selectpasswordLength() {
   passwordLength = prompt("Enter password length - 8 to 128 characters.");
@@ -138,14 +138,22 @@ function selectpasswordLength() {
   }
   alert("Your password will be " + passwordLength + " characters long")
 }
-selectpasswordLength()
+selectpasswordLength();
 
 
 //FUNCTION : Include Numbers ?
-
-
-//  If "OK" : alert "password will include ***" 
-//If "CANCEL" :  alert " password will not include ***"
+let numInPassword;
+function includeNumbers() {
+  numInPassword = prompt("Include numbers ?"); //user can click OK  or cancel
+  //If "CANCEL" :  alert " password will not include ***"
+  if (numInPassword === null) {
+    alert("Your password will not contain numbers.");
+    //  If "OK" : alert "password will include ***" .
+  } else {
+    alert("Your password will contain numbers. ")
+  }
+} 
+includeNumbers();
 
 
 
