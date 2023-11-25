@@ -91,7 +91,7 @@ var upperCasedCharacters = [
 ///Step 1 : find out with prompt what does the user want to include in their password and validate each choice with an alert
 //          Prompt: "password length (min 8, max 128)"
 //          Alert: "password will be *** long"
-// If the user enters a number 8> or >128 - prompt again with red font
+// If the user enters a number 8> or >128 - prompt again
 
 // Other promtps :  Include Numbers ?
 //                  Include Uppercase ?
@@ -107,8 +107,9 @@ var upperCasedCharacters = [
 //Step 3: display the password generated that is stored in the variable created in Stpe 2. 
 
 // We need an event listerner to call the function when the button is clicked
+// all above functions will be nested in global generatePassword()
 
-// STEP1 FUNCTION: 
+// FUNCTION: select password length
 
 let passwordLength
 
@@ -138,6 +139,74 @@ function selectpasswordLength() {
   alert("Your password will be " + passwordLength + " characters long")
 }
 selectpasswordLength()
+
+
+//FUNCTION : Include Numbers ?
+
+
+//  If "OK" : alert "password will include ***" 
+//If "CANCEL" :  alert " password will not include ***"
+
+
+
+//FUNCTION : Include Uppercase ?
+//  If "OK" : alert "password will include ***" 
+//If "CANCEL" :  alert " password will not include ***"
+
+
+
+
+//FUNCTION :  Include Lowercase ?
+//  If "OK" : alert "password will include ***" 
+//If "CANCEL" :  alert " password will not include ***"
+
+
+//FUNCTION : Include Special Characters ?
+//  If "OK" : alert "password will include ***" 
+//If "CANCEL" :  alert " password will not include ***"
+
+           
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
