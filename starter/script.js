@@ -108,56 +108,88 @@ var upperCasedCharacters = [
 
 // We need an event listerner to call the function when the button is clicked
 
+// STEP1 FUNCTION: 
+
+let passwordLength
+
+function selectpasswordLength() {
+  passwordLength = prompt("Enter password length - 8 to 128 characters.");
+  //make sure the user enter at least one character and number selected is between 8 and 128
+  if (passwordLength === null) {
+    alert("Enter password length - 8 to 128 characters."); 
+    //ask for input again 
+    return selectpasswordLength()
+
+  } else {
+    // check that the input is a number with isNaN() : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isNaN
+    if (isNaN(passwordLength)) {
+      alert("Enter a number between 8 and 128");
+    }
+    // checking the number is between 8 and 128 with nested if statements: https://www.thoughtco.com/javascript-making-decisions-2037427
+      if (passwordLength < 8) {
+        alert("Password length must be at least 8 characters.");
+        return selectpasswordLength()
+      }
+      if (passwordLength > 128) {
+        alert("Password length must be 128 characters maximum.");
+        return selectpasswordLength()
+      }
+  }
+  alert("Your password will be " + passwordLength + " characters long")
+}
+selectpasswordLength()
+
+
 
 
 //var selectpasswordLength = prompt("Enter password length - 8 to 128 characters.");
   
-  let selectpasswordLength;
+//   let selectpasswordLength;
 
-  function getPasswordOptions() {
-    //selectpasswordLength = prompt("Enter password length - 8 to 128 characters.");
+//   function getPasswordOptions() {
+//     //selectpasswordLength = prompt("Enter password length - 8 to 128 characters.");
 
-    // keep prompting the user to enter a number between8 and 128 untile they do. Once they odo, we can move to the next prompt
-    while (selectpasswordLength < 8 || selectpasswordLength > 128) {
-      selectpasswordLength = parseInt(prompt("Enter password length - 8 to 128 characters."));
-      alert("Enter password length - 8 to 128 characters.");
+//     // keep prompting the user to enter a number between8 and 128 untile they do. Once they odo, we can move to the next prompt
+//     while (selectpasswordLength < 8 || selectpasswordLength > 128) {
+//       selectpasswordLength = parseInt(prompt("Enter password length - 8 to 128 characters."));
+//       alert("Enter password length - 8 to 128 characters.");
       
-      // Prompt the user again to enter a valid password length
+//       // Prompt the user again to enter a valid password length
 
-      selectpasswordLength = prompt("Enter password length - 8 to 128 characters.");
-    }
-      //selectpasswordLength = prompt("Enter password length - 8 to 128 characters.");
+//       selectpasswordLength = prompt("Enter password length - 8 to 128 characters.");
+//     }
+//       //selectpasswordLength = prompt("Enter password length - 8 to 128 characters.");
 
-    var takesLowercase = prompt("Include lowercase?"); 
-    var takesUppercase = prompt("Include uppercase?"); 
-    var takesNumber = prompt("Include numbers?"); 
-    var takesSpecialCharacters = prompt("Include special characters?"); 
-  }
+//     var takesLowercase = prompt("Include lowercase?"); 
+//     var takesUppercase = prompt("Include uppercase?"); 
+//     var takesNumber = prompt("Include numbers?"); 
+//     var takesSpecialCharacters = prompt("Include special characters?"); 
+//   }
   
-  getPasswordOptions();
+//   getPasswordOptions();
 
-// Function for getting a random element from an array
-function getRandom(arr) {
+// // Function for getting a random element from an array
+// function getRandom(arr) {
 
-}
+// }
 
-// Function to generate password with user input
-function generatePassword() {
-console.log("password button clicked ")
+// // Function to generate password with user input
+// function generatePassword() {
+// console.log("password button clicked ")
 
-return "Generated password field";
-}
+// return "Generated password field";
+// }
 
-// Get references to the #generate element
-var generateBtn = document.querySelector('#generate');
+// // Get references to the #generate element
+// var generateBtn = document.querySelector('#generate');
 
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector('#password');
+// // Write password to the #password input
+// function writePassword() {
+//   var password = generatePassword();
+//   var passwordText = document.querySelector('#password');
 
-  passwordText.value = password;
-}
+//   passwordText.value = password;
+// }
 
-// Add event listener to generate button
-generateBtn.addEventListener('click', writePassword);
+// // Add event listener to generate button
+// generateBtn.addEventListener('click', writePassword);
