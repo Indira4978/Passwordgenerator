@@ -156,22 +156,49 @@ function includeNumbers() {
 includeNumbers();
 
 
-
 //FUNCTION : Include Uppercase ?
-//  If "OK" : alert "password will include ***" 
-//If "CANCEL" :  alert " password will not include ***"
-
-
+let isUpper;
+function includeUpper() {
+  isUpper = prompt("Include uppercase characters ?"); //user can click OK  or cancel
+  //If "CANCEL" :  alert " password will not include ***"
+  if (isUpper === null) {
+    alert("Your password will not contain uppercase characters.");
+    //  If "OK" : alert "password will include ***" .
+  } else {
+    alert("Your password will contain uppercase characterss. ")
+  }
+} 
+includeUpper();
 
 
 //FUNCTION :  Include Lowercase ?
-//  If "OK" : alert "password will include ***" 
-//If "CANCEL" :  alert " password will not include ***"
+let isLower;
+function includeLower() {
+  isUpper = prompt("Include lowercase characters ?"); //user can click OK  or cancel
+  //If "CANCEL" :  alert " password will not include ***"
+  if (isLower === null) {
+    alert("Your password will not contain lowercase characters .");
+    //  If "OK" : alert "password will include ***" .
+  } else {
+    alert("Your password will contain lowercase characters . ")
+  }
+} 
+includeLower();
 
 
 //FUNCTION : Include Special Characters ?
-//  If "OK" : alert "password will include ***" 
-//If "CANCEL" :  alert " password will not include ***"
+let isSpecial;
+function includeSpecial() {
+  isUpper = prompt("Include special  characters ?"); //user can click OK  or cancel
+  //If "CANCEL" :  alert " password will not include ***"
+  if (isUpper === null) {
+    alert("Your password will not contain special characters.");
+    //  If "OK" : alert "password will include ***" .
+  } else {
+    alert("Your password will contain special characters. ")
+  }
+} 
+includeSpecial();
 
            
 
