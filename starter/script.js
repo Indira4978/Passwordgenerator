@@ -126,6 +126,7 @@ let generatedPassword ="";
 
 function generatePassword() {
   let passwordLength = 0; 
+  generatedPassword ="";
 
   function selectpasswordLength() {
     passwordLength = prompt("Enter password length - 8 to 128 characters.");
@@ -287,4 +288,8 @@ function writePassword() {
 }
 
 // Add event listener to generate button
+generateBtn.addEventListener('click', generatePassword); 
 generateBtn.addEventListener('click', writePassword); 
+
+//how to delete previous password generated to clear the field for a new one ?
+
