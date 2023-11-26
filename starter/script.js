@@ -123,7 +123,9 @@ let numbersInPassword = [
 
 // FUNCTION: select password length
 
-let passwordLength;
+
+function generatePassword(){
+  let passwordLength = 1; 
 
 function selectpasswordLength() {
   passwordLength = prompt("Enter password length - 8 to 128 characters.");
@@ -131,7 +133,7 @@ function selectpasswordLength() {
   if (passwordLength === null) {
     alert("Enter password length - 8 to 128 characters."); 
     //ask for input again 
-    return selectpasswordLength()
+    return selectpasswordLength();
 
   } else {
     // check that the input is a number with isNaN() : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isNaN
@@ -148,13 +150,20 @@ function selectpasswordLength() {
         return selectpasswordLength();
       }
   }
-  alert("Your password will be " + passwordLength + " characters long")
+  alert("Your password will be " + passwordLength + " characters long");
+  
 }
+
 selectpasswordLength();
 
 //function select characters types: 
+let numInPassword;
+let isSpecial;
+let isUpper;
+let isLower;
+
 function selectCharacterTypes(){
-  let numInPassword;
+
   function includeNumbers() {
     numInPassword = prompt("Include numbers ?"); //user can click OK  or cancel
     //If "CANCEL" :  alert " password will not include ***"
@@ -162,14 +171,14 @@ function selectCharacterTypes(){
       alert("Your password will not contain numbers.");
       //  If "OK" : alert "password will include ***" .
     } else {
-      alert("Your password will contain numbers. ")
+      alert("Your password will contain numbers. ");
     }
   } 
+
   includeNumbers();
 
 
   //FUNCTION : Include Uppercase ?
-  let isUpper;
   function includeUpper() {
     isUpper = prompt("Include uppercase characters ?"); //user can click OK  or cancel
     //If "CANCEL" :  alert " password will not include ***"
@@ -177,14 +186,15 @@ function selectCharacterTypes(){
       alert("Your password will not contain uppercase characters.");
       //  If "OK" : alert "password will include ***" .
     } else {
-      alert("Your password will contain uppercase characterss. ")
+      alert("Your password will contain uppercase characterss. ");
     }
   } 
+
   includeUpper();
 
 
   //FUNCTION :  Include Lowercase ?
-  let isLower;
+  
   function includeLower() {
     isLower = prompt("Include lowercase characters ?"); //user can click OK  or cancel
     //If "CANCEL" :  alert " password will not include ***"
@@ -195,11 +205,12 @@ function selectCharacterTypes(){
       alert("Your password will contain lowercase characters . ")
     }
   } 
+
   includeLower();
 
 
   //FUNCTION : Include Special Characters ?
-  let isSpecial;
+  
   function includeSpecial() {
     isSpecial = prompt("Include special  characters ?"); //user can click OK  or cancel
     //If "CANCEL" :  alert " password will not include ***"
@@ -213,99 +224,40 @@ function selectCharacterTypes(){
   } 
   includeSpecial();
 
+  //check that at keast one character type has been selected.
   if (numInPassword === null && isLower === null && isUpper === null && isSpecial === null){
     alert("Select at least one type of character");
     return selectCharacterTypes();
   } 
 }
+
 selectCharacterTypes();
-//FUNCTION : Include Numbers ?
-// let numInPassword;
-// function includeNumbers() {
-//   numInPassword = prompt("Include numbers ?"); //user can click OK  or cancel
-//   //If "CANCEL" :  alert " password will not include ***"
-//   if (numInPassword === null) {
-//     alert("Your password will not contain numbers.");
-//     //  If "OK" : alert "password will include ***" .
-//   } else {
-//     alert("Your password will contain numbers. ")
-//   }
-// } 
-// includeNumbers();
 
+let generatedPassword ="";
+let characterList = [];
 
-// //FUNCTION : Include Uppercase ?
-// let isUpper;
-// function includeUpper() {
-//   isUpper = prompt("Include uppercase characters ?"); //user can click OK  or cancel
-//   //If "CANCEL" :  alert " password will not include ***"
-//   if (isUpper === null) {
-//     alert("Your password will not contain uppercase characters.");
-//     //  If "OK" : alert "password will include ***" .
-//   } else {
-//     alert("Your password will contain uppercase characterss. ")
-//   }
-// } 
-// includeUpper();
-
-
-// //FUNCTION :  Include Lowercase ?
-// let isLower;
-// function includeLower() {
-//   isUpper = prompt("Include lowercase characters ?"); //user can click OK  or cancel
-//   //If "CANCEL" :  alert " password will not include ***"
-//   if (isLower === null) {
-//     alert("Your password will not contain lowercase characters .");
-//     //  If "OK" : alert "password will include ***" .
-//   } else {
-//     alert("Your password will contain lowercase characters . ")
-//   }
-// } 
-// includeLower();
-
-
-// //FUNCTION : Include Special Characters ?
-// let isSpecial;
-// function includeSpecial() {
-//   isUpper = prompt("Include special  characters ?"); //user can click OK  or cancel
-//   //If "CANCEL" :  alert " password will not include ***"
-//   if (isUpper === null) {
-//     alert("Your password will not contain special characters.");
-//     //  If "OK" : alert "password will include ***" .
-//   } else {
-
-//     alert("Your password will contain special characters. ")
-//   }
-// } 
-// includeSpecial();
-
-// check that at least one type of characters has been selected 
-         
-//Step 2 : generate the password with the info collected in Step 1
-let generatedPassword =""
-
-function generatePassword() {
+function randomPass() {
   // all the possible characters based on user choice put in an array.
-  let characterList = [];
+  
   //if numbers included then add numbersInPasswrd in characterList,
   if (numInPassword !== null) {
-    characterList.push(numbersInPassword);
+    characterList.concat(numbersInPassword);
   }
   //if lowerCase included then add lowerCasedCharacters in characterList, 
   if (isLower !== null){
-    characterList.push(lowerCasedCharacters);
+    characterList.concat(lowerCasedCharacters);
   }
   //if Uppercase included then add upperCasedCharacters in characterList,
   if (isUpper !== null) {
-    characterList.push(upperCasedCharacters);
+    characterList.concat(upperCasedCharacters);
   }
   
   //if SpecialCharacters included then add specialCharacters in characterList,
   if (isSpecial !== null); {
-    characterList.push(specialCharacters);
+    characterList.concat(specialCharacters);
   }
   
-  return characterList;
+  // return characterList;
 
   //loop though passwordLength to pick a random character from characterList//
 
@@ -313,24 +265,23 @@ function generatePassword() {
       const randomCharacter = Math.floor(Math.random() * characterList.length); 
       generatedPassword += characterList[randomCharacter];
   }
+
+  console.log("password button clicked ");
+
+  return generatedPassword;
 }
- generatePassword();
+ randomPass();
 
-
-
-// Function to generate password with user input
-function generatePassword() {
-console.log("password button clicked ")
-
-return "Generated password field";
 }
+
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  var password = generatedPassword;
   var passwordText = document.querySelector('#password');
 
   passwordText.value = password;
